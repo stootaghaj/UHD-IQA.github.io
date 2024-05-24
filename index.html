@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIM 2024 UHD-IQA Challenge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>AIM 2024 UHD-IQA Challenge</h1>
+            <h2>Pushing the Boundaries of Blind Photo Quality Assessment</h2>
+            <p>Sony AI, Sony Interactive Entertainment</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <h2>Important Dates</h2>
+        <ul>
+            <li>2024.05.27 - Release of train data (input and output) and validation data (inputs only)</li>
+            <li>2024.05.27 - Validation server online</li>
+            <li>2024.07.15 - Final test data (inputs only)</li>
+            <li>2024.07.21 - Test release output results submission deadline</li>
+            <li>2024.07.22 - Fact sheets and code/executable submission deadline</li>
+            <li>2024.07.29 - Preliminary test results release to the participants</li>
+            <li>2024.08.05 - Paper submission deadline for entries from the challenge (AIM workshop @ ECCV 2024)</li>
+            <li>2024.09.30 - AIM 2024 Advances in Image Manipulation workshop, Milano, Italy</li>
+        </ul>
+    </section>
+
+    <section class="container">
+        <h2>Challenge Overview</h2>
+        <p>The 1st Edition of The UHD-IQA Challenge: Pushing the Boundaries of Blind Photo Quality Assessment will be held on 30th Sept 2024 in conjunction with ECCV 2024.</p>
+        <p>The challenge goal is to predict the subjective quality at high resolutions and at the upper end of the quality scale. Most of the existing lower-resolution IQA datasets consist of less than 1% exceptional quality images (below FHD).</p>
+        <p>This workshop aims to provide an overview of the new trends and advances in those areas. Moreover, it will offer an opportunity for academic and industrial attendees to interact and explore collaborations.</p>
+        <p>The aim is to develop a lightweight quality prediction model. The final report will include model metrics such as runtime, and MACS/FLOPs per pixel. Participants can use any pre-trained and existing solutions. However, only novel methods adhering to the competition guidelines will be encouraged to submit a paper to the workshop.</p>
+    </section>
+
+    <section class="container">
+        <h2>Competition</h2>
+        <p>The full dataset consists of 6000 images which are then divided into the following three splits: training (70%), validation (15%) and test (15%).</p>
+        <p>The training data consists of 4200 4K UHD images covering a wide range of content which are subjectively annotated with mean opinion ratings. The training data is already made available to the registered participants.</p>
+        <p>The validation set will consist of 900 images with MOS ratings (please see deadlines for dates when they will be released).</p>
+        <p>The test set will consist of 900 images and will not be released to the challenge participants but will be used by the challenge organizers to evaluate the submitted model.</p>
+        <h3>Important</h3>
+        <ul>
+            <li>Participants can train the models using any publicly available open-sourced dataset. Although, complete details must be provided on the final report.</li>
+            <li>The validation/test dataset consists of new image classes which are not included in the training set.</li>
+        </ul>
+    </section>
+
+    <section class="container">
+        <h2>Organizers</h2>
+        <ul>
+            <li>Vlad Hosu (Sony AI Zurich Lab) &lt;vlad.hosu[at]sony.com&gt;</li>
+            <li>Saman Zadtootaghaj (Sony Interactive Entertainment, Berlin) &lt;Saman.Zadtootaghaj@sony.com&gt; **urgent contact</li>
+            <li>Nabajeet Barman (Sony Interactive Entertainment, London) &lt;Nabajeet.Barman@sony.com&gt;</li>
+        </ul>
+    </section>
+
+    <section class="container">
+        <h2>Evaluation</h2>
+        <p>The evaluation consists of the task of predicting the quality of the 4K UHD images. The methods will be ranked according to their correlation with the human subjective ratings (SROCC, PLCC, KCC). Please see below for detailed evaluation criteria.</p>
+        <p>All submitted models should be able to process at a speed of a minimum of XX MACs. Only models which pass this minimum speed/complexity requirement will be eligible for prize consideration.</p>
+        <p>All qualifying models (models which meet the minimum complexity criteria defined above), will be evaluated based on their average performance considering three correlation measures: SROCC, PLCC, and KCC. The average of these three-correlation measures will be used as the final performance measure to decide the winning model.</p>
+        <p>The participants must report their MACs and integrate the script in their code that reports MACs for a given image input for final submission.</p>
+        <p>An example of reporting MACs in PyTorch is given in the following GitHub link: <a href="https://github.com/mv-lab/VideoAI-Speedrun">https://github.com/mv-lab/VideoAI-Speedrun</a></p>
+        <p>The participants can use additional public datasets for developing their solutions; however, note that the MOS scale and subjective test design might be different from our setup.</p>
+        <p>Participants can use any pre-trained and existing solutions. However, only novel methods will be encouraged to submit a paper to the workshop.</p>
+        <p>In addition to the winning model according to the aforementioned criteria, at the discretion of the organizing committee, the most innovative solution will receive an extra prize (please see the Prize section for details). The proposed method does not necessarily need to win the competition but rather should propose a novel idea. The final decision on whether to award this prize remains with the competition organizers and in case of absence of any solution to their liking, such a prize might not be awarded.</p>
+        <p>The winner will be awarded (please see Prize section for details) and will be invited to follow the ECCV submission guide for workshops to describe their solution and to submit to the AIM workshop at the ECCV 2024 conference.</p>
+    </section>
+
+    <section class="container">
+        <h2>Dataset Description</h2>
+        <p>The UHD dataset comprises 6000 UHD-1 images (at least 3840x2160). Based on popularity indicators, it's selected from the top photos from Pixabay out of 1.4 million in total (at the time of indexing). The images are of high aesthetics and technical quality. Synthetic (CG or heavily edited) images were removed manually (as far as I remember)—they are all authentic photos, no generated stuff. They were collected back in ~2020, when this was not so much an issue. The annotation was done by 10-ish photography freelancers, repeated twice for each. The filtering of the quality of the annotators was strong; only the most self-consistent ones made it. Thus, the final ratings are high quality and reliable. The annotation is for technical quality, not aesthetics, and the confounds are largely accounted for because of the annotator's background. The quality of many of the images is higher than that of some super-resolution datasets, and it's 4k+, so it can work both as an IQA and a super-res dataset, depending on how we pitch it.</p>
+        <p>You can find some samples of the dataset in the following:</p>
+    </section>
+
+    <footer>
+        <p>AIM 2024 UHD-IQA Challenge &copy; 2024</p>
+    </footer>
+</body>
+</html>
